@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<title>Инвестиции</title>
+</head>
+<body>
+
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+		<h5 class="my-0 mr-md-auto font-weight-normal">Tinkoff</h5>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="#">Домой</a>
+			<a class="p-2 text-dark" href="#">Админка</a>
+		</nav>
+		<a class="btn btn-outline-primary" href="#">sign in</a>
+	</div>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-5 offset-1">
+				<h3>Добавить</h3>
+				<form action="" method="post">
+					{% csrf_token %}
+					{{ form.name }}
+                    <p>Кол-во</p>{{ form.nn }}
+                    <p>Цена за лот</p>{{ form.paper_price }}
+					<p>Комиссия</p>{{ form.broker_pay }}
+					<p>Курс покупки</p>{{ form.dollar_price }}
+					<input type="submit" name="send" value="Добавить" class="mt-2 btn btn-danger">
+				</form>
+
+			</div>
+
+		</div>
+	</div>
+
+
+				<table border="1">
+					<tr>
+						<td>Наименование</td>
+						<td>Кол-во</td>
+						<td>Цена за лот</td>
+						<td>Цена за пакет</td>
+						<td>Комиссия</td>
+						<td>Цена с учетом комиссии</td>
+						<td>Курс покупки</td>
+						<td>Цена покупки в ₽</td>
+						<td>Текущая цена лота</td>
+						<td>Текущая цена $</td>
+						<td>Прирост $</td>
+						<td>Прирост %</td>
+						<td>Прирост ₽</td>
+						<td>Прирост %</td>
+				      {% for info in all_info %}
+                    <tr>
+					    <td> {{info.paper}} </td>
+					    <td> {{info.nn}} </td>
+					    <td> {{info.paper_price}} </td>
+					    <td> {{info.stack_price}} </td>
+					    <td> {{info.broker_pay}} </td>
+					    <td> {{info.total_pay}} </td>
+					    <td> {{info.dollar_price}}</td>
+					    <td> {{info.rub_pay}}</td>
+					    <td> {{info.now_price}}</td>
+					    <td> {{info.usd_now}}</td>
+					    <td> {{info.usd_growth}} $</td>
+					    <td> {{info.dollar_growth}} %</td>
+					    <td> <i>{{info.rub_growth}} ₽</i></td>
+					    <td> {{info.pyb_growth}} %</td>
+				    </tr>
+				      {% endfor %}
+				    </tr>
+                    <tr>
+                        <td><b>Итого</b></td><td></td><td></td>
+						<td><b>{{stack_total}}</b></td>
+						<td><b>{{broker_total}}</b></td>
+						<td><b>{{end_total}}</b></td>
+						<td><b>{{avg_dollar}}</b></td>
+						<td><b>{{rub_total}}</b></td><td></td><td></td>
+						<td><b>	{{usd_tot_growh}} $</b></td>
+						<td><b> {{total_usd_prsnt}} %</b></td>
+						<td><b>{{rub_tot_growth}} ₽</b></td>
+						<td><b>{{total_rub_prsnt}} %</b></td>
+                    </tr>
+				</table>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
