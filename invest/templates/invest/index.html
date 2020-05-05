@@ -23,26 +23,19 @@
 		<a class="btn btn-outline-primary" href="#">sign in</a>
 	</div>
 
-	<div class="container mt-5">
-		<div class="row">
-			<div class="col-5 offset-1">
-				<h3>Добавить</h3>
-				<form action="" method="post">
-					{% csrf_token %}
-					{{ form.name }}
-                    <p>Кол-во</p>{{ form.nn }}
-                    <p>Цена за лот</p>{{ form.paper_price }}
-					<p>Комиссия</p>{{ form.broker_pay }}
-					<p>Курс покупки</p>{{ form.dollar_price }}
-					<input type="submit" name="send" value="Добавить" class="mt-2 btn btn-danger">
-				</form>
-
-			</div>
-
-		</div>
-	</div>
-
-
+<form action="" method="post">
+	<table>
+		<tr>
+			<td>{% csrf_token %}{{ form.name }}</td>
+			<td>{{ form.nn }}</td>
+			<td>{{ form.paper_price }}</td>
+			<td>{{ form.broker_pay }}</td>
+			<td>{{ form.dollar_price }}</td>
+			<td><input type="submit" name="send" value="Добавить" class="mt-2 btn btn-danger"></td>
+		</tr>
+	</table>
+</form>
+	
 				<table class="table_dark">
 					<tr>
 						<td>Наименование</td>
